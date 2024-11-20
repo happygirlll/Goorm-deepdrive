@@ -1,2 +1,3 @@
 - [241119]  유튜브 first commit 완료
-- [241119]  넷플릭스 first commit 완료
+- [241119]  넷플릭스 first commit 완료 -> 수정해야함(미완)
+- [241120]  인스타그램 first commit 완료  -> 수정해야함(미완)
