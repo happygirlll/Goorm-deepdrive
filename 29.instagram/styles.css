@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px 10px;
 }
 
 .logo {
@@ -14,7 +14,7 @@
     flex: 2;
     display: flex;
     padding: 10px;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
 }
 
@@ -38,18 +38,32 @@
     box-shadow: none;
 }
 
-.home-button,
-.shop-button,
-.messenger-button,
-.profile-button {
-    margin-left: 0.3125rem;
+.heart-button {
     background-color: white;
     border: 0.0625rem solid white;
 }
 
-.profile-button img {
-    width: 1.5625rem;
+.nav-bar {
+    position: fixed; /* 화면 고정 */
+    display: flex;
+    width: 80px;
+    border-right: 1px solid #ddd;
+    flex-direction: column; /* 세로 방향 정렬 */
+    justify-content: space-between; /* 시작, 중간, 끝 정렬 */
+    background-color: #fff;
+    gap: 1px;
 }
+
+.nav-bar li {
+    list-style: none;
+}
+
+
+.nav-bar img {
+    width: 24px;
+    height: 24px;
+}
+
 
 /*.story-menu {*/
 /*    padding: 0.625rem 1.25rem; !* 위아래 여백 10px, 왼오 여백 20px *!*/
