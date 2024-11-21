@@ -54,6 +54,10 @@
     background-color: #fff;
     align-items: center;
     padding: 10px;
+
+    height: 100vh; /* 화면 높이 전체 */
+    transform: translateX(-100%); /* 기본적으로 화면 밖에 숨김 */
+    transition: transform 0.3s ease; /* 부드러운 전환 */
 }
 
 .nav-bar ul {
@@ -76,8 +80,27 @@
     margin-bottom: 10px;
 }
 
+/*화면이 768px이상일 때 헤더 숨기고 네비게이션 바 표시*/
+@media (min-width: 768px) {
+    .header {
+        display: none; /* 헤더 숨김 */
+    }
+
+    .nav-bar {
+        transform: translateX(0); /* 네비게이션 바 표시 */
+    }
+}
 
 
+@media (max-width: 767px) {
+    .header {
+        display: flex; /* 헤더 표시 */
+    }
+
+    .nav-bar {
+        transform: translateX(-100%); /* 네비게이션 바 숨김 */
+    }
+}
 
 /*.story-menu {*/
 /*    padding: 0.625rem 1.25rem; !* 위아래 여백 10px, 왼오 여백 20px *!*/
