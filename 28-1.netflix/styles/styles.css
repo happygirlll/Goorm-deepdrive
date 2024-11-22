@@ -1,0 +1,146 @@
+body {
+    background-color: #0f0e0e;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #0f0e0e;
+    position: sticky;
+    top: 0;
+    z-index: 100; /* 헤더가 위에 표시되도록 설정 */
+}
+
+.navbar .logo img {
+    height: 40px;
+    width: auto;
+    display: block;
+}
+
+.navbar .menu {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar .menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    transition: color 0.3s;
+}
+
+.navbar .menu a:hover {
+    color: rgb(131, 131, 131);
+}
+
+.navbar .icons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.navbar .icons .icon {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.main-banner {
+    position: relative;
+    height: 400px;
+    background: url('../assets/images/gladiator2.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    padding-left: 50px;
+}
+
+
+.banner-content {
+    max-width: 50%;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.banner-content h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.banner-content p {
+    font-size: 12px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+.banner-content .buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.banner-content .buttons button {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 10px 20px;
+    font-size: 13px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.banner-content .buttons button:hover {
+    background-color: rgb(107, 107, 107); /* 마우스 오버 시 색상 변경 */
+}
+
+.categories {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 20px;
+}
+
+.category {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.category h2 {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+.thumbnails {
+    display: flex;
+    gap: 15px;
+    position: relative; /* 자식 요소의 위치 기준 */
+}
+
+.thumbnails img {
+    width: 230px;
+    height: 130px;
+    border-radius: 5px;
+    object-fit: cover; /* 이미지 비율 유지 */
+    transition: transform 0.3s ease , z-index 0.3s ease;
+    z-index: 1;
+}
+
+.thumbnails img:hover {
+    transform: scale(1.4); /* 이미지 크기 키우기 */
+    z-index: 10; /* 다른 이미지보다 앞으로 표시 */
+    transition: transform 0.3s ease, z-index 0s; /* 확대 시 z-index 즉시 적용 */
+}
+
+.thumbnails-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.thumbnail p {
+    margin-top: 5px;
+    font-size: 14px;
+}
