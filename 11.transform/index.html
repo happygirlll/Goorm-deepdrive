@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+    <style>
+        .element {
+            display: inline-block; /*블록 요소처럼 크기(높이와 너비)를 설정*/
+            background-color: lightblue;
+            height: 100px;
+            width: 100px;
+
+            /* skew라는 이름의 애니메이션을 적용, 3초 동안 실행, 무한 반복 */
+            animation: skew 3s infinite;
+
+            /* 요소를 X축 방향으로 20도 기울이는 변환(transform) 적용 */
+            transform: skew(20deg);
+        }
+
+        @keyframes skew {
+            0% {
+                transform: skewX(20deg);
+            }
+            100% {
+                transform: skewX(-20deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="element"></div>
+    <div class="element"></div>
+    <div class="element"></div>
+</body>
+</html>

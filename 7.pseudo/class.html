@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+    <style>
+        .parent p:first-of-type {
+            color: lightpink;
+        }
+        .container{
+            background-color: lightblue;
+            padding: 10px;
+            margin-bottom: 30px;
+        }
+        .container:hover{
+            background-color: lightcoral;
+        }
+        .focus-input:focus {
+            background-color: lightgreen;
+        }
+        /* 자식결합자(>)는 두 css 선택기 사이에 배치됨*/
+        .container-two>div{
+            margin-top:30px;
+            background-color: lightpink;
+            width: 100px;
+            height: 100px;
+            float: left;
+        }
+
+        /*container-two의 홀수가 lightskyblue색상으로 됨*/
+        .container-two>div:nth-child(2n+1){
+            background-color: lightskyblue;
+        }
+
+        .container-two>div:last-child{
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container container-box">
+        Mouse Hover
+    </div>
+    <input class="focus-input" type="text">
+    <div class="container-two">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <br><br><br><br><br><br><br>
+    <div class="parent">
+        <span>A</span>
+        <p>B</p>
+        <p>C</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+    <style>
+        .element {
+            display: inline-block; /*블록 요소처럼 크기(높이와 너비)를 설정*/
+            background-color: lightblue;
+            height: 100px;
+            width: 100px;
+            animation: shimmy 3s infinite;
+        }
+
+        @keyframes shimmy {
+            0%{
+                transform: translate(0, 0);
+            }
+
+            100%{
+                transform: translate(20px, 50px);
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+<div class="element"></div>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+.image {
+    width: 400px;
+    height: 400px;
+
+    /* fill이 기본값 */
+    object-fit: cover;
+    object-position: right;
+
+}
