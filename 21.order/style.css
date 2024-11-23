@@ -1,0 +1,40 @@
+.container {
+    border: 6px solid lightgray;
+    display: flex;
+    height: 700px;
+    width:600px;
+
+}
+
+.flex-item {
+    color: black;
+    font-size: 2rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+.item-1 {
+    background-color: lightblue;
+}
+
+.item-2{
+    background-color: lightyellow;
+    order: -1; /*1보다 앞으로 나옴*/
+}
+
+.item-3 {
+    background-color: lightpink;
+}
+
+.item-4 {
+    background-color: lightgreen;
+}
+
+.item-5 {
+    background-color: lightsalmon;
+    order: 2; /*기본적으로 order값이 0이므로 5가 뒤로 감*/
+}
+
+.item-6 {
+    background-color: lightskyblue;
+}
