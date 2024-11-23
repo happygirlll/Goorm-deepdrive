@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+    <style>
+        .box-container {
+            width: 200px;
+            height: 200px;
+            border: 2px solid #669966;
+        }
+        .box-container div {
+            padding: 10px;
+            border: 1px solid green;
+            background-color: #ffdddd;
+        }
+        #static-box{
+            /*static을 주면 아무런 변화가 없음*/
+            position: static;
+            top: 20px;
+            left: 30px;
+        }
+        #relative-box {
+            position: relative;
+            top: 30px;
+            left: 30px;
+        }
+        #absolute-box {
+            /*relative-box안에 absolute-box가 작동된다,.*/
+            position: absolute;
+            top: 30px;
+
+        }
+        #fixed-box {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box-container">
+        <div id="static-box">static</div>
+        <div id="relative-box">relative</div>
+        <div id="absolute-box">absolute</div>
+        <div id="fixed-box">fixed</div>
+    </div>
+</body>
+</html>
