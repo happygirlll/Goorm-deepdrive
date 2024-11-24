@@ -1,5 +1,15 @@
+.container {
+    display: flex; /* main과 aside를 가로로 나란히 배치 */
+    width: 100%;
+    max-width: 1200px; /* 전체 최대 폭 */
+    margin: 0 auto; /* 중앙 정렬 */
+    gap: 20px; /* main과 aside 간격 */
+    align-content: center;
+}
+
 main {
     display: flex;
+    flex:3;
     flex-direction: column; /* 콘텐츠를 세로 정렬 */
     justify-content: flex-start; /* 수직 중앙 정렬 */
     align-items: center;
