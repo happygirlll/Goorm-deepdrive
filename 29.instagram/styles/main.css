@@ -1,4 +1,4 @@
-.main {
+main {
     display: flex;
     flex-direction: column; /* 콘텐츠를 세로 정렬 */
     justify-content: flex-start; /* 수직 중앙 정렬 */

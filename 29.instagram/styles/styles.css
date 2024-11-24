@@ -1,4 +1,4 @@
-.header {
+header {
     height: 40px;
     display: flex;
     justify-content: space-between;
@@ -50,10 +50,10 @@
     width: 50px;
     border-right: 1px solid #ddd;
     flex-direction: column; /* 세로 방향 정렬 */
-    justify-content: space-between;
+    justify-content: flex-start;
     background-color: #fff;
-    align-items: center;
-    padding: 10px;
+    align-items: flex-start;
+    padding: 20px;
     height: 100vh; /* 화면 높이 전체 */
     transform: translateX(-100%); /* 기본적으로 화면 밖에 숨김 */
     transition: transform 0.3s ease; /* 부드러운 전환 */
@@ -69,13 +69,33 @@
 }
 
 .nav-middle {
-    flex: 1;
+    flex: none;
+    padding-bottom: 30px;
+}
+
+.nav-middle li {
+    display: flex; /* 아이콘과 텍스트를 가로로 정렬 */
+    align-items: center; /* 아이콘과 텍스트 수직 정렬 */
+    padding: 3px 0; /* 상하 간격 추가 */
+    gap: 5px; /* 아이콘과 텍스트 간격 설정 */
+}
+
+.nav-middle img {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0; /* 이미지 크기가 줄어들지 않도록 설정 */
+}
+
+.nav-middle .nav-text {
+    font-size: 16px; /* 텍스트 크기 */
+    color: #000;
+    white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
 }
 
 .nav-end {
-    margin-top: 10px;
+    margin-top: 30px; /* 자동으로 아래로 밀림 */
+    padding-top: 30px; /* 추가 간격 설정 */
 }
-
 
 .nav-bar li {
     list-style: none; /*점 제거*/
@@ -87,19 +107,68 @@
     height: 24px;
     margin: 0;
 }
-
-/*화면이 768px 이상일 때 헤더 숨기고 네비게이션 바 표시*/
-@media (min-width: 768px) {
+/* 768px 이상일 때: 네비게이션에 아이콘과 텍스트 추가, main에 side 메뉴 추가 */
+@media (min-width: 1200px) {
     .header {
         display: none; /* 헤더 숨김 */
     }
 
     .nav-bar {
-        transform: translateX(0); /* 네비게이션 바 표시 */
+        transform: translateX(0); /* 네비게이션 표시 */
+        width: 200px; /* 네비게이션 바 확장 */
+    }
+
+    .nav-bar img {
+        width: 24px;
+        margin-right: 10px; /* 아이콘과 텍스트 간격 */
+    }
+
+    .nav-bar li {
+        display: flex;
+        align-items: center;
+        font-size: 16px; /* 텍스트 추가 */
+    }
+
+    .sidefooter-menu {
+        display: block; /* side 메뉴 표시 */
+        width: 300px;
+        padding: 20px;
+        border-left: 1px solid #ddd;
+        height: 100vh;
+        overflow-y: auto;
     }
 }
 
+/* 768px 이상 ~ 1200px 미만: 네비게이션에 아이콘만 표시 */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .header {
+        display: none; /* 헤더 숨김 */
+    }
 
+    .nav-bar {
+        transform: translateX(0); /* 네비게이션 표시 */
+        width: 30px; /* 아이콘만 표시 */
+    }
+
+    .nav-bar li {
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav-bar img {
+        width: 24px;
+    }
+
+    .nav-bar .nav-text {
+        display: none; /* 텍스트 숨김 */
+    }
+
+    .sidefooter-menu {
+        display: none; /* side 메뉴 숨김 */
+    }
+}
+
+/* 768px 미만일 때: 헤더 나타내고 네비게이션 숨김 */
 @media (max-width: 767px) {
     .header {
         display: flex; /* 헤더 표시 */
@@ -107,5 +176,23 @@
 
     .nav-bar {
         transform: translateX(-100%); /* 네비게이션 바 숨김 */
+    }
+
+    .nav-bar img {
+        width: 24px;
+        margin-right: 10px; /* 아이콘과 텍스트 간격 */
+    }
+
+    .nav-bar li {
+        display: flex;
+        align-items: center;
+        font-size: 16px; /* 텍스트 추가 */
+    }
+
+    .nav-bar .nav-text {
+        display: none;
+    }
+    .sidefooter-menu {
+        display: none; /* side 메뉴 숨김 */
     }
 }
