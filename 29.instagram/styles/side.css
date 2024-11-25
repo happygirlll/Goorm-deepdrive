@@ -2,8 +2,6 @@
     flex: 1; /* aside가 전체 너비의 1배 차지 */
     background-color: #fff;
     padding: 20px;
-    border-left: 1px solid #ddd;
-    height: fit-content;
     position: sticky;
     top: 20px; /* 스크롤 시 고정 위치 */
 }
@@ -12,13 +10,20 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
-.profile-image {
-    width: 20px;
-    height: 20px;
+.profile-image, .recommend-image {
+    width: 40px ;
+    height: 40px ;
+    margin-right: 5px;
+    border-radius: 50%;
+    object-fit: cover; /* 이미지를 영역 안에 맞춤 */
+    display: block;
+    max-width: 100%; /* 부모 크기를 초과하지 않도록 */
+    max-height: 100%; /* 부모 크기를 초과하지 않도록 */
 }
+
 
 .user-details {
     flex: 1;
@@ -44,7 +49,13 @@
     font-weight: bold;
     cursor: pointer;
 }
-
+.follow-button{
+    background: none;
+    border: none;
+    color: #0095f6;
+    font-weight: bold;
+    cursor: pointer;
+}
 .recommend-section {
     margin-top: 20px;
 }
@@ -61,12 +72,7 @@
 .recommend-item {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-}
-
-.recommend-image {
-    width: 20px;
-    height: 20px;
+    gap: 10px;
 }
 
 .footer-links {

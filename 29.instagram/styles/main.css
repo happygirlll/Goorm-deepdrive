@@ -4,10 +4,9 @@
     max-width: 1200px; /* 전체 최대 폭 */
     margin: 0 auto; /* 중앙 정렬 */
     gap: 20px; /* main과 aside 간격 */
-    align-content: center;
 }
 
-main {
+.main {
     display: flex;
     flex:3;
     flex-direction: column; /* 콘텐츠를 세로 정렬 */
