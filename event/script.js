@@ -61,6 +61,5 @@ function handleEvent(e){
     }
 
     console.log(`Event Type: ${e.type}`);
-    //title.textContent = `MouseX: ${e.offsetX}, MouseY: ${e.offsetY}`;
     title.textContent = e.target.value;
 }
