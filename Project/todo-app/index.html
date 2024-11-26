@@ -6,105 +6,140 @@
     <title>TODO LIST</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            margin: 0;
             background-color: #f4f4f4;
         }
         .container {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            width: 400px;
-            min-height: 300px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
             padding: 20px;
+            background: #bee1f2;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
-        h1 {
-            text-align: center;
+        h3 {
             margin: 0;
-        }
-        .todo-input {
-            display: flex;
-            gap: 5px;
-            justify-content: space-between;
-        }
-        .todo-input input {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .todo-input button {
-            padding: 10px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .todo-list {
-            display: grid;
-            grid-template-columns: 100px repeat(3, 1fr);
-            gap: 10px;
-        }
-        .todo-item {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            align-items: center;
-            padding: 10px;
-            background-color: #d1ecf1;
-            border: 1px solid #bee5eb;
-            border-radius: 4px;
+            color: rgb(45, 45, 45);
+            font-size: 1.5em;
             text-align: left;
         }
-        .todo-item button {
-            padding: 5px 10px;
-            background-color: #dc3545;
+        .add-todo {
+            display: inline-block;
+            color: rgb(45, 45, 45);
+            font-size: 0.9em;
+            margin-top: 10px;
+            text-align: right;
+            text-decoration: underline;
+            cursor: pointer;
+            background: none; /* 배경 제거 */
+            border: none; /* 테두리 제거 */
+            padding: 0; /* 여백 제거 */
+        }
+        .todo-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background: #daecf5;
+            font-size: 0.9em;
+            border-radius: 2px solid white;
+        }
+        .todo-item input[type="text"] {
+            flex: 1;
+            margin: 0 10px;
+            border: none;
+            background: transparent;
+            border-bottom: 2px solid white;
+            outline: none;
+            font-size: 1em;
+            color: rgb(45, 45, 45);
+        }
+        .todo-item.completed input[type="text"] {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        .todo-item button.delete {
+            background-color: #2987b2;
             color: white;
             border: none;
             border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .todo-item button.edit {
+            background-color: #144962;
+            margin-right: 5px;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
             cursor: pointer;
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>TODO LIST</h1>
-    <input type="text" id="todo" placeholder="할 일을 입력하세요" />
-    <div class="todo-input">
-        <button id="add-button">추가</button>
-    </div>
-    <div class="todo-list" id="todoList"></div>
+    <h3>Todo</h3>
+    <button class="add-todo" id="addTodoButton">새로운 TODO 추가하기</button>
+    <div id="todoList"></div>
 </div>
 
 <script>
-    const addButton = document.querySelector("#add-button");
+    const addTodoButton = document.getElementById("addTodoButton");
+    const todoList = document.getElementById("todoList");
 
-    addButton.onclick = addTodo;
+    // 새로운 TODO 추가하기 버튼 클릭 시 TODO 추가
+    addTodoButton.onclick = () => {
+        createTodoItem();
+    };
 
-    function addTodo() {
-        const todoInput = document.getElementById("todo");
-        const todoText = todoInput.value;
-        if (todoText) {
-            const todoList = document.getElementById("todoList");
-            const todoItem = document.createElement("div");
-            todoItem.className = "todo-item";
-            todoItem.textContent = todoText;
-            const deleteButton = document.createElement("button");
-            deleteButton.textContent = "삭제";
-            deleteButton.onclick = function () {
-                todoList.removeChild(todoItem);
+    function createTodoItem() {
+        const todoItem = document.createElement("div");
+        todoItem.className = "todo-item";
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.onclick = () => {
+            todoItem.classList.toggle("completed");
+        };
+
+        const todoInput = document.createElement("input");
+        todoInput.type = "text";
+        todoInput.disabled = true; // 초기에는 수정 불가능 상태
+
+        const editButton = document.createElement("button");
+        editButton.textContent = "수정";
+        editButton.className = "edit";
+        editButton.onclick = () => {
+            todoInput.disabled = false; // 수정 가능 상태로 변경
+            todoInput.focus(); // 입력창에 포커스
+            todoInput.onblur = () => {
+                todoInput.disabled = true; 
             };
-            console.log(deleteButton);
-            todoItem.appendChild(deleteButton);
-            todoList.appendChild(todoItem);
-            todoInput.value = "";
-        }
+        };
+
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "삭제";
+        deleteButton.className = "delete";
+        deleteButton.onclick = () => {
+            todoList.removeChild(todoItem);
+        };
+
+        todoItem.appendChild(checkbox);
+        todoItem.appendChild(todoInput);
+        todoItem.appendChild(editButton);
+        todoItem.appendChild(deleteButton);
+        todoList.appendChild(todoItem);
+
+        todoInput.disabled = false; 
     }
 </script>
 </body>
