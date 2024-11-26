@@ -3,161 +3,17 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <title>TODO LIST</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 600px;
-            margin: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            width: 350px;
-            padding: 20px;
-            background: #bee1f2;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-        h3 {
-            margin: 0;
-            color: rgb(45, 45, 45);
-            font-size: 24px;
-            text-align: left;
-        }
-        .add-todo {
-            display: inline-block;
-            color: rgb(45, 45, 45);
-            font-size: 14px;
-            margin-top: 10px;
-            text-align: right;
-            text-decoration: underline;
-            cursor: pointer;
-            background: none; 
-            border: none; 
-            padding: 0; /
-        }
-        .todo-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 10px;
-            padding: 10px;
-            border-radius: 5px;
-            background: #daecf5;
-            font-size: 14px;
-            border-radius: 2px solid white;
-            border: 2px solid transparent; /* 기본 상태에서 테두리 없음 */
-            transition: opacity 0.3s, background-color 0.3s; /* 색상 흐림 효과 추가 */
-        }
 
-        .todo-item.completed {
-            opacity: 0.5; /* 체크박스 클릭 시 색상 흐림 효과 */
-        }
-        
-        .todo-item.editing {
-            border: 2px solid white; /* 수정 중일 때 테두리 추가 */
-        }
-
-        .todo-item input[type="text"] {
-            flex: 1;
-            margin: 0 10px;
-            border: none;
-            background: transparent;
-            outline: none;
-            font-size: 15px;
-            color: rgb(45, 45, 45);
-        }
-        /* TODO item editing */
-        .todo-item input[type="text"].editing-input {
-            border-bottom: 2px solid white;
-        }
-        /* TODO item completed */
-        .todo-item.completed input[type="text"] {
-            text-decoration: line-through;
-            color: #888;
-        }
-
-        .todo-item button.delete {
-            background-color: #2987b2;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            padding: 5px 10px;
-            cursor: pointer;
-        }
-        .todo-item button.edit {
-            background-color: #144962;
-            margin-right: 5px;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            padding: 5px 10px;
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
 <div class="container">
-    <h3>Todo</h3>
+    <h1>Todo</h1>
     <button class="add-todo" id="addTodoButton">새로운 TODO 추가하기</button>
     <div id="todoList"></div>
 </div>
 
-<script>
-    const addTodoButton = document.getElementById("addTodoButton");
-    const todoList = document.getElementById("todoList");
-
-    addTodoButton.onclick = () => {
-        createTodoItem();
-    };
-
-    function createTodoItem() {
-        const todoItem = document.createElement("div");
-        todoItem.className = "todo-item";
-
-        const checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        checkbox.onclick = () => {
-            todoItem.classList.toggle("completed");
-        };
-
-        const todoInput = document.createElement("input");
-        todoInput.type = "text";
-        todoInput.disabled = true; // 초기에는 수정 불가능 상태
-
-        const editButton = document.createElement("button");
-        editButton.textContent = "수정";
-        editButton.className = "edit";
-        editButton.onclick = () => {
-            todoItem.classList.add("editing"); //테두리 추가
-            todoInput.disabled = false; // 수정 가능 상태로 변경
-            todoInput.classList.add("editing-input"); // 하단 선 추가
-            todoInput.focus(); // 입력창에 포커스
-            todoInput.onblur = () => {
-                todoInput.disabled = true; 
-                todoInput.classList.remove("editing-input"); 
-                todoItem.classList.remove("editing");
-            };
-        };
-
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = "삭제";
-        deleteButton.className = "delete";
-        deleteButton.onclick = () => {
-            todoList.removeChild(todoItem);
-        };
-
-        todoItem.appendChild(checkbox);
-        todoItem.appendChild(todoInput);
-        todoItem.appendChild(editButton);
-        todoItem.appendChild(deleteButton);
-        todoList.appendChild(todoItem);
-
-    }
-</script>
+<script src="script.js"></script>
 </body>
 </html>
