@@ -9,7 +9,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 600px;
             margin: 0;
             background-color: #f4f4f4;
         }
@@ -25,20 +25,20 @@
         h3 {
             margin: 0;
             color: rgb(45, 45, 45);
-            font-size: 1.5em;
+            font-size: 24px;
             text-align: left;
         }
         .add-todo {
             display: inline-block;
             color: rgb(45, 45, 45);
-            font-size: 0.9em;
+            font-size: 14px;
             margin-top: 10px;
             text-align: right;
             text-decoration: underline;
             cursor: pointer;
-            background: none; /* 배경 제거 */
-            border: none; /* 테두리 제거 */
-            padding: 0; /* 여백 제거 */
+            background: none; 
+            border: none; 
+            padding: 0; /
         }
         .todo-item {
             display: flex;
@@ -48,11 +48,16 @@
             padding: 10px;
             border-radius: 5px;
             background: #daecf5;
-            font-size: 0.9em;
+            font-size: 14px;
             border-radius: 2px solid white;
             border: 2px solid transparent; /* 기본 상태에서 테두리 없음 */
+            transition: opacity 0.3s, background-color 0.3s; /* 색상 흐림 효과 추가 */
         }
 
+        .todo-item.completed {
+            opacity: 0.5; /* 체크박스 클릭 시 색상 흐림 효과 */
+        }
+        
         .todo-item.editing {
             border: 2px solid white; /* 수정 중일 때 테두리 추가 */
         }
@@ -63,7 +68,7 @@
             border: none;
             background: transparent;
             outline: none;
-            font-size: 1em;
+            font-size: 15px;
             color: rgb(45, 45, 45);
         }
         /* TODO item editing */
@@ -106,7 +111,6 @@
     const addTodoButton = document.getElementById("addTodoButton");
     const todoList = document.getElementById("todoList");
 
-    // 새로운 TODO 추가하기 버튼 클릭 시 TODO 추가
     addTodoButton.onclick = () => {
         createTodoItem();
     };
