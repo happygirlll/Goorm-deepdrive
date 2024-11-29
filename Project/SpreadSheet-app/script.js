@@ -1,5 +1,8 @@
 const spreadSheetContainer =
-    document.querySelector('#spreadsheet-container');
+    document.querySelector("#spreadsheet-container");
+
+// 엑셀시트 export 기능 생성하기
+const exportBtn = document.querySelector("#export-btn");
 
 const ROWS = 10
 const COLS = 10
@@ -10,7 +13,7 @@ const alphabets = [
     "O", "P", "Q", "R", "S", "T", "U",
     "V", "W", "X", "Y", "Z"]
 
-/* 문자열이 아닌 객체 데이터 생성하기 */
+// 문자열이 아닌 객체 데이터 생성하기
 class Cell {
     constructor(isHeader, disabled, data, row, column,rowName, columnName, active=false){
         this.isHeader = isHeader;
@@ -24,9 +27,32 @@ class Cell {
     }
 }
 
+exportBtn.onclick = function(e) {
+    let csv = "";
+    for (let i = 0; i <spreadsheet.length; i++) {
+        if(i === 0) continue;
+        csv +=
+            spreadsheet[i]
+                .filter(item => !item.isHeader)
+                .map(item => item.data)
+                .join(',') +"\r\n";
+    }
+    //console.log('csv: ', csv);
+
+    //엑셀 파일 다운로드
+    const csvObj = new Blob([csv]);
+    const csvUrl = URL.createObjectURL(csvObj);
+    console.log("csv", csvUrl);
+
+    const a = document.createElement("a");
+    a.href = csvUrl;
+    a.download = "spreadsheet File Name.csv";
+    a.click();
+}
+
 initSpreadSheet();
 
-/* 기본 데이터 생성하기 */
+//기본 데이터 생성하기
 function initSpreadSheet() {
     for (let i = 0; i < ROWS; i++) {
         let spreadsheetRow = [];
@@ -69,7 +95,7 @@ function initSpreadSheet() {
         spreadsheet.push(spreadsheetRow);
     }
     drawSheet();
-    console.log(spreadsheet);
+    //console.log(spreadsheet);
 }
 
 /* cell 생성하기 */
@@ -84,8 +110,14 @@ function createCellEl(cell) {
         cellEl.classList.add('header');
     }
     cellEl.onclick = () => handleCellClick(cell);
+    cellEl.onchange = (e) => handleOnChange(e.target.value, cell);
 
     return cellEl;
+}
+
+// 셀에 넣은 값으로 변경
+function handleOnChange(data, cell){
+    cell.data = data;
 }
 
 /* 셀 클릭 시 하이라이트 생기게 함 */
@@ -98,6 +130,7 @@ function handleCellClick(cell) {
     //console.log('clicked cell', columnHeaderEl, rowHeaderEl);
     columnHeaderEl.classList.add("active");
     rowHeaderEl.classList.add("active");
+    document.querySelector("#cell-status").innnerHTML = cell.columnName + "" + cell.rowName;
 }
 
 function getElFromRowCol(row, col) {
@@ -112,8 +145,8 @@ function clearHeaderActiveStates(){
         header.classList.remove("active");
     });
 }
-/* cell 렌더링하기 */
-/* 10개 셀을 하나의 row div로 감싸기 */
+/* cell 렌더링하기 
+ 10개 셀을 하나의 row div로 감싸기 */
 function drawSheet() {
     for(let i=0; i<spreadsheet.length; i++) {
         const rowContainerEl = document.createElement('div');
