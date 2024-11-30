@@ -10,11 +10,12 @@
     <!-- 5. 축약 및 합산을 reduce로 -->
     <script>
         function f2(limit, list){
-            let acc = 0;
-            for (const a of L.take(limit, L.map(a => a * a, L.filter(a => a % 2, list)))){
-                acc += b;   
-            }
-            console.log(acc);
+            console.log(
+            _.reduce((acc,a) => acc + a,
+                0, //0이 acc에 들어감.
+                L.take(limit,
+                    L.map(a => a * a,
+                        L.filter(a => a % 2, list)))));
         }
         f2(3,[1,2,3,4,5,6,7,8,9,10]);
     </script>

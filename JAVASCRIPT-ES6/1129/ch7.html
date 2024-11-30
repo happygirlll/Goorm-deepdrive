@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //다른 예제
+    function f3(end) {
+        let i = 1;
+        while (i < end){
+            console.log(i);
+            i += 2;
+        }
+    }
+    f3(10);
+
+    function f4(end) {
+        _.go(
+            L.range(1, end, 2),
+            _.each(console.log)
+        );
+    }
+    f3(10);
+</script>
+</body>
+</html>
