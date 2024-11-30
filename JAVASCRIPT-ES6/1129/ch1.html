@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1. 홀수 n개 더하기 -->
+    <script>
+        function f1(limit, list){
+            let acc = 0;
+            for (const a of list){
+                if (a % 2){
+                    //제곱된 값 출력하기
+                    const b = a*a;
+                    acc += b;
+                    //console.log(b);
+
+                    //limit을 가지고 홀수가 3번 나올 때 까지만 출력하겠다.
+                    if (--limit === 0) break;
+                }
+            }
+            //모든 값 더하기
+            console.log(acc);
+        }
+        f1(3,[1,2,3,4,5,6,7,8,9,10]);
+    </script>
+</body>
+</html>
