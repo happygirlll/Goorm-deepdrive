@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/fxjs/dist/fx.js"></script>
+</head>
+<body>
+    <script>
+        const { L, C } = window._;
+        
+        const users = [
+            { name: 'AA', age: 35 },
+            { name: 'BB', age: 26 },
+            { name: 'CC', age: 28 },
+            { name: 'CC', age: 34 },
+            { name: 'EE', age: 23 }
+    ];
+    console.log(
+        _.reduce((total, u) => total + u.age, 0, users));
+    </script>
+</body>
+</html>
