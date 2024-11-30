@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table</title>
+    <script src="https://unpkg.com/fxjs/dist/fx.js"></script>
+</head>
+<body>
+    <script>
+        /* 추억의 구구단 */
+        _.go(
+            L.range(2, 10), 
+            L.map(a => _.go(
+                L.range(1, 10), 
+                L.map(b => `${a}x${b}=${a * b}`), 
+                join('\n') 
+            )),
+            join('\n\n'), 
+            console.log 
+        );
+    </script>
+</body>
+</html>

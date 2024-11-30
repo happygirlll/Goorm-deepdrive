@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/fxjs/dist/fx.js"></script>
+</head>
+<body>
+    <script>
+        const { L, C } = window._;
+        /* 추억의 별 그리기 */
+        //방법1
+        _.go(
+            L.range(1, 6),
+            L.map(L.range),
+            L.map(L.map(_ => '*')),
+            L.map(_.reduce((a, b) => `${a}${b}`)),
+            _.reduce((a, b) => `${a}\n${b}`),
+            console.log);
+        
+        //방법2
+        _.go(
+            L.range(1, 6),
+            L.map(s => _.go(
+                L.range(s),
+                L.map(_ => '*'),
+                _.reduce((a, b) => `${a}${b}`)
+            )),
+            _.reduce((a, b) => `${a}\n${b}`),
+            console.log);
+    </script>
+</body>
+</html>
