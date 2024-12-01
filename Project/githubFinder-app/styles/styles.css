@@ -21,7 +21,7 @@ body {
     margin: 0 auto; /* 중앙 정렬 */
 }
 header {
-    padding: 10px 20px;
+    padding: 0px 20px;
     box-sizing: border-box;
     width: 100%;
     background-color: #4582EB;
@@ -40,7 +40,7 @@ main {
 }
 
 .search-section {
-    width: 100%;
+    max-width: 100%;
     margin: 10px 0;
     padding: 20px;
     border-radius: 5px;
@@ -60,8 +60,8 @@ main {
 }
 
 #usernameInput {
-    width: 100%;
-    padding: 10px;
+    width: 890px;
+    padding: 10px 10px 10px ;
     border-radius: 5px;
     border: 1px solid #d9d9d9;
     font-size: 15px;
@@ -70,8 +70,7 @@ main {
     display: grid;
     grid-template-columns: 1fr 2fr; /* 두 개의 열로 나누어 사진과 정보 나란히 */
     gap: 30px; /* 사진과 정보 사이 여백 */
-    justify-self: start;
-    margin: 10px 0;
+    margin: 20px 0;
     padding: 20px;
     border-radius: 5px;
     border: 1px solid #d9d9d9;
@@ -147,7 +146,8 @@ main {
 h3 {
     font-size: 25px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
 
 .repos-section {
@@ -163,8 +163,9 @@ footer {
     background-color: #eeeeee;
     justify-content: center;
     align-items: center;
-    height: 40px;
+    height: 50px;
     color: rgb(21, 21, 21);
-    font-size: 12px;
+    font-size: 14px;
     margin-bottom: 0px;
+    text-align: center;
 }
