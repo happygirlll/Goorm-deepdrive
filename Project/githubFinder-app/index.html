@@ -9,51 +9,58 @@
 <body>
     <script src="script.js"></script>
     <header class="header">
-        <h1>GitHub Finder</h1>
+        <div class="container">
+            <h1>GitHub Finder</h1>
+        </div>
     </header>
     <main class="main">
-        <!-- 검색 섹션 -->
-        <section class="search-section">
-            <h2>Search GitHub Users</h2>
-            <p>Enter a username to fetch a user profile and repos</p>
-            <input type="text" id="usernameInput" placeholder="Enter a username">
-        </section>
+        <div class="container">
+            <!-- 검색 섹션 -->
+            <section class="search-section">
+                <h2>Search GitHub Users</h2>
+                <p>Enter a username to fetch a user profile and repos</p>
+                <input type="text" id="usernameInput" placeholder="Enter a username">
+            </section>
 
-        <!-- 프로필 섹션 -->
-        <section class="profile-section">
-            <div id="profile-main">
-                <img src="assets/avatar.png" alt="user-profile">
-                <button id="view-btn">View Profile</button>
-            </div>
-            <div id="profile-info">
-                <div id="profile-btn">
-                    <button id="publicRepos-btn">Public Repos</button>
-                    <button id="publicGists-btn">Public Gists</button>
-                    <button id="followers-btn">Followers</button>
-                    <button id="following-btn">Following</button>
-                </div>    
-                <div id="profile-details">
-                    <span id="compay">Company</span>
-                    <span id="blog">Website/Blog</span>
-                    <span id="location">Location</span>
-                    <span id="since">Member Since</span>
+            <!-- 프로필 섹션 -->
+            <section class="profile-section">
+                <div id="profile-main">
+                    <img src="assets/avatar.png" alt="user-profile">
+                    <button id="view-btn">View Profile</button>
                 </div>
-            </div>
-        </section>
+                <div id="profile-info">
+                    <div id="profile-btn">
+                        <button id="publicRepos-btn">Public Repos</button>
+                        <button id="publicGists-btn">Public Gists</button>
+                        <button id="followers-btn">Followers</button>
+                        <button id="following-btn">Following</button>
+                    </div>    
+                    <div id="profile-details">
+                        <span id="compay">Company</span>
+                        <span id="blog">Website/Blog</span>
+                        <span id="location">Location</span>
+                        <span id="since">Member Since</span>
+                    </div>
+                </div>
+            </section>
 
-        <!-- repos 섹션 -->
-        <section class="repos-section">
-            <div>
-                <!-- repos title-->
-                <button id="stars-btn">Stars</button>
-                <button id="watchers-btn">Watchers</button>
-                <button id="forks-btn">Forks</button>
-            </div>
-        </section>
+            
+            <!-- repos 섹션 -->
+            <section class="repos-section">
+                <div>
+                    <h3>Latest Repos</h3>
+                    <button id="stars-btn">Stars</button>
+                    <button id="watchers-btn">Watchers</button>
+                    <button id="forks-btn">Forks</button>
+                </div>
+            </section>
+        </div>
     </main>
 
     <footer class="footer">
-        <p>GitHub Finder &copy; </p>
+        <div class="container">
+            <p>GitHub Finder &copy; </p>
+        </div>
     </footer>
 </body>
 </html>
