@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const usernameInput = document.getElementById('usernameInput');
     const viewBtn = document.getElementById('view-btn');
     const profileMain = document.getElementById('profile-main');
+    const profileDetails = document.getElementById('profile-details');
 
     
     usernameInput.addEventListener('keypress', function(event) {
@@ -51,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return response.json();
             })
             .then(function(data) {
-                updateProfilePicture(data); // 프로필 사진 업데이트 함수 호출
+                updateProfile(data); // 프로필 업데이트 함수 호출
             })
             .catch(function(error) {
                 console.error(error);
@@ -60,12 +61,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // 프로필 사진을 업데이트하는 함수
-    function updateProfilePicture(data) {
+    function updateProfile(data) {
 
         // profileMain 요소 내부의 HTML을 동적으로 설정
         profileMain.innerHTML = `
             <img src="${data.avatar_url}" alt="user-profile" width="200" height="200" style="border-radius: 50%; object-fit: cover;">
             <button id="view-btn" onclick="window.open('${data.html_url}', '_blank')">View Profile</button>
+        `;
+
+        profileDetails.innerHTML = `
+            <div id="profile-details">
+                <span id="company">Company: ${data.company || 'null'}</span>
+                <span id="blog">Website/Blog: ${data.blog ? `<a href="${data.blog}" target="_blank">${data.blog}</a>` : 'null'}</span>
+                <span id="location">Location: ${data.location || 'null'}</span>
+                <span id="since">Member Since: ${new Date(data.created_at).toLocaleDateString()}</span>
+            </div>
         `;
     }
 });
