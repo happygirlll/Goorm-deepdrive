@@ -14,9 +14,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     const usernameInput = document.getElementById('usernameInput');
     const viewBtn = document.getElementById('view-btn');
-    const profileMain = document.getElementById('profile-main');
-    const profileInfoBtn = document.getElementById('profile-info-btn');
-    const profileInfoDetails = document.getElementById('profile-info-details');
+    const profileMain = document.querySelector('.profile-main');
+    const profileInfoBtn = document.querySelector('.profile-info-btn');
+    const profileInfoDetails = document.querySelector('.profile-info-details');
 
     
     usernameInput.addEventListener('keypress', function(event) {
@@ -71,17 +71,16 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
 
         profileInfoBtn.innerHTML = `
-            <div id="profile-info-btn">
+            <div class="profile-info-btn">
                 <button id="publicRepos-btn">Public Repos: ${data.public_repos}</button>
                 <button id="publicGists-btn">Public Gists: ${data.public_gists}</button>
                 <button id="followers-btn">Followers: ${data.followers}</button>
                 <button id="following-btn">Following: ${data.following}</button>
             </div>
-
         `;
 
         profileInfoDetails.innerHTML = `
-            <div id="profile-info-details">
+            <div class="profile-info-details">
                 <span id="company">Company: ${data.company || 'null'}</span>
                 <span id="blog">Website/Blog: ${data.blog ? `<a href="${data.blog}" target="_blank">${data.blog}</a>` : 'null'}</span>
                 <span id="location">Location: ${data.location || 'null'}</span>
