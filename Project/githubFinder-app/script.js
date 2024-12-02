@@ -15,7 +15,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const usernameInput = document.getElementById('usernameInput');
     const viewBtn = document.getElementById('view-btn');
     const profileMain = document.getElementById('profile-main');
-    const profileDetails = document.getElementById('profile-details');
+    const profileInfoBtn = document.getElementById('profile-info-btn');
+    const profileInfoDetails = document.getElementById('profile-info-details');
 
     
     usernameInput.addEventListener('keypress', function(event) {
@@ -63,14 +64,24 @@ document.addEventListener('DOMContentLoaded', function() {
     // 프로필 사진을 업데이트하는 함수
     function updateProfile(data) {
 
-        // profileMain 요소 내부의 HTML을 동적으로 설정
+        // profile 요소 내부의 HTML을 동적으로 설정
         profileMain.innerHTML = `
             <img src="${data.avatar_url}" alt="user-profile" width="200" height="200" style="border-radius: 50%; object-fit: cover;">
             <button id="view-btn" onclick="window.open('${data.html_url}', '_blank')">View Profile</button>
         `;
 
-        profileDetails.innerHTML = `
-            <div id="profile-details">
+        profileInfoBtn.innerHTML = `
+            <div id="profile-info-btn">
+                <button id="publicRepos-btn">Public Repos: ${data.public_repos}</button>
+                <button id="publicGists-btn">Public Gists: ${data.public_gists}</button>
+                <button id="followers-btn">Followers: ${data.followers}</button>
+                <button id="following-btn">Following: ${data.following}</button>
+            </div>
+
+        `;
+
+        profileInfoDetails.innerHTML = `
+            <div id="profile-info-details">
                 <span id="company">Company: ${data.company || 'null'}</span>
                 <span id="blog">Website/Blog: ${data.blog ? `<a href="${data.blog}" target="_blank">${data.blog}</a>` : 'null'}</span>
                 <span id="location">Location: ${data.location || 'null'}</span>

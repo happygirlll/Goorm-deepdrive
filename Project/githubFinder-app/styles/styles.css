@@ -112,13 +112,13 @@ main {
     gap: 20px; 
 }
 
-#profile-btn {
+#profile-info-btn {
     display: grid;
     grid-auto-flow: column;
     gap: 10px;
 }
 
-#profile-btn button {
+#profile-info-btn button {
     padding: 10px;
     background-color: #e1e1e1;
     border: none;
@@ -126,17 +126,17 @@ main {
     cursor: pointer;
 }
 
-#profile-btn button:hover {
+#profile-into-btn button:hover {
     background-color: #d1d1d1;
 }
 
-#profile-details {
+#profile-info-details {
     display: grid;
     border: 1px solid #d9d9d9;
     border-radius: 5px;
 }
 
-#profile-details span {
+#profile-info-details span {
     font-size: 16px;
     padding: 15px;
     border-bottom: 1px solid #d9d9d9;
