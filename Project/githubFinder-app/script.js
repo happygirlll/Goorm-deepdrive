@@ -1,15 +1,3 @@
-/*
-    #DOMContentLoaded?
-    : HTML 문서의 기본적인 DOM구조가
-    완전히 로드되고 분석되었을 때 발생하는 이벤트
-
-    # DOMContentLoaded 필요한 이유?
-    - 안전한 dom 접근
-    - 효율적인 실행 시점
-    - 페이지의 성능 최적화
-    
-*/
-
 // DOMContentLoaded 이벤트 리스너 사용
 document.addEventListener('DOMContentLoaded', function() {
     const usernameInput = document.getElementById('usernameInput');
@@ -17,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const profileMain = document.querySelector('.profile-main');
     const profileInfoBtn = document.querySelector('.profile-info-btn');
     const profileInfoDetails = document.querySelector('.profile-info-details');
+    const reposSection = document.querySelector('.repos-section');
 
     
     usernameInput.addEventListener('keypress', function(event) {
@@ -24,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const username = usernameInput.value.trim(); 
             if (username) {
                 fetchUserProfile(username); // 사용자 프로필 가져오기 함수 호출
+                fetchUserRepos(username); // 사용자 리포지토리 가져오기 함수 호출
             }
         }
     });
@@ -61,7 +51,27 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
-    // 프로필 사진을 업데이트하는 함수
+    // 사용자 리포지토리를 가져오기
+    function fetchUserRepos(username) {
+        const url = 'https://api.github.com/users/' + username + '/repos?sort=created'; // GitHub 사용자 리포지토리 URL 생성
+
+        fetch(url)
+            .then(function(response) {
+                if (!response.ok) {
+                    throw new Error('Repositories not found'); // 리포지토리를 찾을 수 없을 때 오류 발생
+                }
+                return response.json();
+            })
+            .then(function(data) {
+                updateReposSection(data); // 리포지토리 업데이트 함수 호출
+            })
+            .catch(function(error) {
+                console.error(error);
+                alert('Repositories not found'); // 리포지토리를 찾을 수 없을 때 경고 메시지
+            });
+    }
+
+    // 프로필 업데이트하는 함수
     function updateProfile(data) {
 
         // profile 요소 내부의 HTML을 동적으로 설정
@@ -86,6 +96,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 <span id="location">Location: ${data.location || 'null'}</span>
                 <span id="since">Member Since: ${new Date(data.created_at).toLocaleDateString()}</span>
             </div>
+        `;
+    }
+
+    function updateReposSection(repos) {
+        reposSection.innerHTML = `
+            ${repos.slice(0, 30).map(repo => `
+                <section class="repos-section">
+                    <div class="repos-list">
+                        <a id="repos-title" href="${repo.html_url}" target="_blank">${repo.name}</a>
+                        <div>
+                            <button id="stars-btn">Stars: ${repo.stargazers_count}</button>
+                            <button id="watchers-btn"> Watchers: ${repo.watchers_count}</button>
+                            <button id="forks-btn">Forks: ${repo.forks_count}</button>
+                        </div>
+                    </div>
+                </section>
+            `).join('')}
         `;
     }
 });

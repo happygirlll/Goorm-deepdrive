@@ -174,9 +174,48 @@ h3 {
 
 .repos-section {
     margin: 20px 0;
-    padding: 20px;
+    padding: 5px;
     border-radius: 5px;
     border: 1px solid #d9d9d9;
+}
+
+.repos-list{
+    display: flex;
+    align-items: center; /* 수평 가운데 정렬 */
+    justify-content: space-between; /* 양 끝 요소들 사이를 균등하게 채움 */
+    padding: 10px;
+}
+.repos-list button {
+    margin-left: 10px; /* 버튼 사이에 적당한 간격을 둠 */
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.repos-list button:hover {
+    opacity: 0.5; 
+}
+
+#repos-title {
+    flex-grow: 1; /* 제목을 최대한 넓게 차지하게 하여 버튼들을 오른쪽에 붙임 */
+    color: #4985EC;
+    text-decoration: none;
+    
+}
+
+#stars-btn{
+    background-color: #4582EB;
+    color: white;
+}
+
+#watchers-btn {
+    background-color: #ACB5BD;
+    color: white;
+}
+
+#forks-btn {
+    background-color: #01B974;
+    color: white;
 }
 
 footer {
