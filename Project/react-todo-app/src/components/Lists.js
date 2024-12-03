@@ -3,44 +3,32 @@
 
 import React from 'react'
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import List from './List';  // List.js를 import
 
 
 export default function Lists({todoData, setTodoData}) {
 
-const handleCompleteChange = (id) => {
-    let newTodoData = todoData.map((data) => {
-        if(data.id === id){
-        data.completed =!data.completed;
+    const handleEnd = (result) => {
+        if (!result.destination) {
+          return;
         }
-        return data;
-    });
-    setTodoData(newTodoData);
-};
-
-
-const handleClick = (id) => {
-    let newTodoData = todoData.filter((data) => data.id !== id);
-    setTodoData(newTodoData);
-};
-
-const handleEnd = (result) => {
-    console.log(result);
-    if (!result.destination) {
-        return;
-    }
-    const newTodoData = todoData;
-    const [reorderedItem] = newTodoData.splice(result.source.index, 1);
-    
-    newTodoData.splice(result.destination.index, 0, reorderedItem);
-    setTodoData(newTodoData);
-};
+        const newTodoData = Array.from(todoData); // 새로운 배열 생성
+        const [reorderedItem] = newTodoData.splice(result.source.index, 1);
+        newTodoData.splice(result.destination.index, 0, reorderedItem);
+      
+        setTodoData(newTodoData); // 새로운 배열로 상태 업데이트
+      };
+      
 
 return (
     <div>
         <DragDropContext onDragEnd={handleEnd}>
             <Droppable droppableId="to-do">
                 {(provided) => (
-                    <div {...provided.droppableProps} ref={provided.innerRef}>
+                    <div
+                    {...provided.droppableProps}
+                    ref={provided.innerRef} // Droppable의 ref를 올바르게 전달
+                    >
                     {todoData.map((data, index) => (
                         <Draggable
                         key={data.id}
@@ -48,43 +36,22 @@ return (
                         index={index}
                         >
                         {(provided, snapshot) => (
-                            <div
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            className={`${
-                                snapshot.isDragging ? "bg-gray-400" : "bg-gray-100"
-                            } flex items-center justify-between w-full px-4 py-1 my-2 text-gray-600 bg-gray-100 border rounded`}
-                            >
-                            <div className="items-center">
-                                <input
-                                type="checkbox"
-                                onChange={() => handleCompleteChange(data.id)}
-                                defaultChecked={data.completed}
-                                />
-                                <span className={data.completed ? "line-through" : undefined}>
-                                {data.title}
-                                </span>
-                            </div>
-                            <div className="items-center">
-                                <button
-                                className="px-4 py-2 float-right"
-                                onClick={() => handleClick(data.id)}
-                                >
-                                x
-                                </button>
-                            </div>
-                            </div>
+                            <List
+                            id={data.id}
+                            title={data.title}
+                            completed={data.completed}
+                            todoData={todoData}
+                            setTodoData={setTodoData}
+                            provided={provided} // Draggable의 provided 전달
+                            snapshot={snapshot} // Draggable의 snapshot 전달
+                            />
                         )}
             </Draggable>
-        ))}
-        {provided.placeholder}
-    </div>
-    )}
-</Droppable>
-
-
-                
+            ))}
+            {provided.placeholder}
+            </div>
+        )}
+        </Droppable>
     </DragDropContext>
     </div>
 );
