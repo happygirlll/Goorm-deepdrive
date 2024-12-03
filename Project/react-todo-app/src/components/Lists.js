@@ -5,7 +5,7 @@ import React from 'react'
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 
-export default function List({todoData, setTodoData}) {
+export default function Lists({todoData, setTodoData}) {
 
 const handleCompleteChange = (id) => {
     let newTodoData = todoData.map((data) => {
@@ -38,7 +38,7 @@ const handleEnd = (result) => {
 return (
     <div>
         <DragDropContext onDragEnd={handleEnd}>
-            <Droppable droppableId="todo">
+            <Droppable droppableId="to-do">
                 {(provided) => (
                     <div {...provided.droppableProps} ref={provided.innerRef}>
                     {todoData.map((data, index) => (

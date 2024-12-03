@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import "./App.css";
 import Form from "./components/Form";  // Form.js를 import
-import List from "./components/List";
+import Lists from "./components/Lists"; 
+
 
 // 컴포넌트 바꿈
 export default function App() {
@@ -33,7 +34,7 @@ export default function App() {
             <h1>할 일 목록</h1>
           </div>
 
-          <List todoData={todoData} setTodoData={setTodoData}/>
+          <Lists todoData={todoData} setTodoData={setTodoData}/>
           <Form handleSubmit={handleSubmit} value={value} setValue={setValue}/>
           
         </div>
