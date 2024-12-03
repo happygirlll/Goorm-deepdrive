@@ -6,7 +6,8 @@ import List from "./components/List";
 // 컴포넌트 바꿈
 export default function App() {
   
-  const [todoData, setTodoData] = useState([]);
+  const [todoData, setTodoData] = useState([
+  ]);
   const [value, setValue] = useState("");
   
   const handleSubmit = (e) => {
