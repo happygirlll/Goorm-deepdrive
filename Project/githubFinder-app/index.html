@@ -23,38 +23,18 @@
                 <input type="text" id="usernameInput" placeholder="Enter a username">
             </section>
 
-            <!-- 프로필 섹션 -->
+            <!-- 프로필 섹션 (내용은 JS에서 동적으로 추가) -->
             <section class="profile-section">
-                <div class="profile-main">
-                    <img src="assets/avatar.png" alt="user-profile">
-                    <button id="view-btn">View Profile</button>
+                <div class="profile-main" id="profile-main">
                 </div>
-                <div class="profile-info">
-                    <div class="profile-info-btn">
-                        <button id="publicRepos-btn">Public Repos</button>
-                        <button id="publicGists-btn">Public Gists</button>
-                        <button id="followers-btn">Followers</button>
-                        <button id="following-btn">Following</button>
-                    </div>    
-                    <div class="profile-info-details">
-                        <span id="company">Company</span>
-                        <span id="blog">Website/Blog</span>
-                        <span id="location">Location</span>
-                        <span id="since">Member Since</span>
-                    </div>
+                <div class="profile-info" id="profile-info">
                 </div>
             </section>
 
-            
             <!-- repos 섹션 -->
             <h3>Latest Repos</h3>
-            <section class="repos-section">
-                <div class="repos-list">
-                    <a id="repos-title">repository</a>
-                    <button id="stars-btn">Stars</button>
-                    <button id="watchers-btn">Watchers</button>
-                    <button id="forks-btn">Forks</button>
-                </div>
+            <section class="repos-section" id="repos-section">
+                <!-- 레포지토리 목록은 JS에서 동적으로 추가 -->
             </section>
         </div>
     </main>

@@ -80,8 +80,8 @@ main {
 .profile-main {
     display: grid;
     grid-template-rows: auto auto; /* 두 개의 행: 이미지와 버튼 */
-    justify-items: center; /* 수평 가운데 정렬 */
-    align-items: center; /* 수직 가운데 정렬 */
+    justify-items: center; 
+    align-items: center; 
     text-align: center;
 }
 
@@ -181,12 +181,12 @@ h3 {
 
 .repos-list{
     display: flex;
-    align-items: center; /* 수평 가운데 정렬 */
+    align-items: center; 
     justify-content: space-between; /* 양 끝 요소들 사이를 균등하게 채움 */
     padding: 10px;
 }
 .repos-list button {
-    margin-left: 10px; /* 버튼 사이에 적당한 간격을 둠 */
+    margin-left: 10px; 
     padding: 5px 10px;
     border: none;
     border-radius: 5px;
