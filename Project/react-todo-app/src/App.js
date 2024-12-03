@@ -1,4 +1,4 @@
-import React, {useState}from "react";
+import React, {useState} from "react";
 import "./App.css";
 import Form from "./components/Form";  // Form.js를 import
 import List from "./components/List";
@@ -26,9 +26,9 @@ export default function App() {
 
   //렌더 메소드 삭제
     return (
-      <div className="container">
-        <div className="todoBlock">
-          <div className="title">
+      <div className="flex items-center justify-center w-screen h-screen bg-blue-100">
+        <div className="w-full p-6 m-4 bg-white rounded shadow md:w-3/4 md:max-w-lg lg:w-3/4 lg:max-w-lg">
+          <div className="flex justify-between mb-3">
             <h1>할 일 목록</h1>
           </div>
 
