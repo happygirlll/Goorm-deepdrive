@@ -1,0 +1,120 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+  margin: 0;
+  background-color: #f4f4f4;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  padding: 20px;
+  background: #bee1f2;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+h1 {
+  margin: 0;
+  color: rgb(45, 45, 45);
+  font-size: 24px;
+  text-align: left;
+}
+.add-todo {
+  display: inline-block;
+  color: rgb(45, 45, 45);
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: right;
+  text-decoration: underline;
+  cursor: pointer;
+  background: none; 
+  border: none; 
+  padding: 0; 
+}
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background: #daecf5;
+  font-size: 14px;
+  border-radius: 2px solid white;
+  border: 2px solid transparent; /* 기본 상태에서 테두리 없음 */
+  transition: transform 0.2s ease;
+}
+
+.todo-item:active {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.todo-item.dragging {
+  background-color: #9ebdcd; 
+  transition: background-color 0.3s ease;
+}
+
+.todo-item input[type="text"] {
+  flex: 1;
+  margin: 0 10px;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 15px;
+  color: rgb(45, 45, 45);
+}
+
+/* TODO 수정*/
+.todo-item.editing {
+  border: 2px solid white; /* 수정 중일 때 테두리 추가 */
+}
+
+.todo-item input[type="text"].editing-input {
+  border-bottom: 2px solid white;
+}
+
+
+/* 체크박스 */
+.todo-item.completed {
+  opacity: 0.5; /* 체크박스 클릭 시 색상 흐림 효과 */
+}
+
+.todo-item.completed input[type="text"] {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.todo-item button.delete {
+  background-color: #2987b2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.todo-item button.edit {
+  background-color: #144962;
+  margin-right: 5px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.delete-all {
+  display: inline-block; 
+  margin-top: 10px; 
+  padding: 5px 8px; 
+  color: rgb(53, 53, 53); 
+  border: none; 
+  border-radius: 4px; 
+  cursor: pointer; 
+  font-size: 12px; 
+  text-align: center; 
+  background-color: #f2f2f2; 
+}
+
