@@ -1,9 +1,16 @@
 import React from 'react';
 
-const List = ({
-    id, title, completed, setTodoData, todoData, provided, snapshot,
+const List = React.memo(({
+    id,
+    title,
+    completed, 
+    setTodoData, 
+    todoData, 
+    provided, 
+    snapshot,
+    handleClick
 }) => {
-
+    console.log("Lists Component");
     const handleCompleteChange = (id) => {
         const newTodoData = todoData.map((data) => ({
           ...data, // 객체 복사
@@ -12,10 +19,7 @@ const List = ({
         setTodoData(newTodoData); // 새로운 배열로 업데이트
       };
       
-      const handleClick = (id) => {
-        const newTodoData = todoData.filter((data) => data.id !== id);
-        setTodoData(newTodoData); // 새로운 배열로 업데이트
-      };
+
       
     
     return (
@@ -49,6 +53,6 @@ const List = ({
                             </div>
                             </div>
     )
-}
+});
 
 export default List

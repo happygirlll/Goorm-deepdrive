@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useCallback} from "react";
 import "./App.css";
 import Form from "./components/Form";  // Form.js를 import
 import Lists from "./components/Lists"; 
@@ -6,11 +6,27 @@ import Lists from "./components/Lists";
 
 // 컴포넌트 바꿈
 export default function App() {
-  
+  console.log("App Component");
   const [todoData, setTodoData] = useState([
+    {
+      id: "1",
+      title: "공부하기",
+      completed: true,
+    },
+    {
+      id: "2",
+      title: "밥먹기",
+      completed: false,
+    },
   ]);
+
   const [value, setValue] = useState("");
   
+  const handleClick = useCallback((id) => {
+    const newTodoData = todoData.filter((data) => data.id !== id);
+    setTodoData(newTodoData); // 새로운 배열로 업데이트
+  }, [todoData]);
+
   const handleSubmit = (e) => {
     //form 안에 input을 전송할 때 페이지 리로드 되는 걸 막아줌
     e.preventDefault();
@@ -34,7 +50,7 @@ export default function App() {
             <h1>할 일 목록</h1>
           </div>
 
-          <Lists todoData={todoData} setTodoData={setTodoData}/>
+          <Lists handleClick={handleClick} todoData={todoData} setTodoData={setTodoData}/>
           <Form handleSubmit={handleSubmit} value={value} setValue={setValue}/>
           
         </div>

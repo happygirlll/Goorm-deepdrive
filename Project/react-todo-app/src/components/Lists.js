@@ -5,21 +5,23 @@ import React from 'react'
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import List from './List';  // List.js를 import
 
-
-export default function Lists({todoData, setTodoData}) {
-
+//rafc로 만든 Lists Component
+const Lists = React.memo( ({todoData, setTodoData, handleClick}) => {
+    console.log("Lists Component");
+    
     const handleEnd = (result) => {
         if (!result.destination) {
-          return;
+            return;
         }
+        // 1. 변경시키는 아이템을 배열에서 지워준다.
+        // 2. return 값으로 지워진 아이템을 잡아준다.
         const newTodoData = Array.from(todoData); // 새로운 배열 생성
         const [reorderedItem] = newTodoData.splice(result.source.index, 1);
+        
+        // 원하는 자리에 reorderItem을 insert 해준다.
         newTodoData.splice(result.destination.index, 0, reorderedItem);
-      
         setTodoData(newTodoData); // 새로운 배열로 상태 업데이트
-      };
-      
-
+    };
 return (
     <div>
         <DragDropContext onDragEnd={handleEnd}>
@@ -37,6 +39,7 @@ return (
                         >
                         {(provided, snapshot) => (
                             <List
+                            handleClick={handleClick} 
                             id={data.id}
                             title={data.title}
                             completed={data.completed}
@@ -54,5 +57,8 @@ return (
         </Droppable>
     </DragDropContext>
     </div>
-);
-}
+)
+});
+
+export default Lists
+
