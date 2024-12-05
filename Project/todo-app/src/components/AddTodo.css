@@ -1,0 +1,12 @@
+.add-todo {
+    display: inline-block;
+    color: rgb(45, 45, 45);
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: right;
+    text-decoration: underline;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}  

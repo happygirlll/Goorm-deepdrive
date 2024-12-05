@@ -1,0 +1,65 @@
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background: #daecf5;
+    font-size: 14px;
+    border: 2px solid transparent;
+    transition: transform 0.2s ease;
+}
+
+.todo-item:active {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 수정 상태 */
+.todo-item.editing {
+    border: 2px solid white;
+}
+
+.todo-item input[type="text"].editing-input {
+    border-bottom: 2px solid white;
+}
+
+/* 완료 상태 */
+.todo-item.completed {
+    opacity: 0.5;
+}
+
+.todo-item.completed input[type="text"] {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.todo-item input[type="text"] {
+    flex: 1;
+    margin: 0 10px;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 15px;
+    color: rgb(45, 45, 45);
+}
+
+.todo-item button.delete {
+    background-color: #2987b2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.todo-item button.edit {
+    background-color: #144962;
+    margin-right: 5px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+}

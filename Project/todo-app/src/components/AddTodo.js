@@ -1,4 +1,5 @@
 import React from 'react';
+import './AddTodo.css';
 
 function AddTodo({ addTodo }) {
     return (

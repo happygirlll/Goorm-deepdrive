@@ -17,7 +17,7 @@ function App() {
   };
 
   const deleteAllTodos = () => {
-    setTodos([]); // TODO 리스트를 빈 배열로 초기화
+    setTodos([]); 
   };
 
   const updateTodo = (id, updatedText) => {

@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoItem from './TodoItem';
+import './TodoList.css';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 function TodoList({ todos, setTodos, updateTodo, deleteTodo, toggleComplete, toggleEditing }) {
